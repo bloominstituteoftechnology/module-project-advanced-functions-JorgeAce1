@@ -27,8 +27,15 @@
     // 🧠 Examples of usage:
     // processSingleLearner({ name: "Elisabeth", lovesJS: 1 }) // should return { name: "Elisabeth", lovesJS: true }
     // processSingleLearner({ name: "Pete", age: 23, lovesJS: 0 }) // should return { name: "Pete", age: 23, lovesJS: false }
-    const processSingleLearner = () => {
-
+    const processSingleLearner = (learner) => {
+      if (typeof learner.lovesJS === 'number' ) {
+        if (learner.lovesJS === 1 ) {
+          learner.lovesJS = true 
+        } else if (learner.lovesJS === 0) {
+          learner.lovesJS = false
+        }
+      }
+      return learner
     }
 
     // 👉 CHALLENGE 2
@@ -41,8 +48,14 @@
     // ❗ Notes:
     // 🧠 There are many approaches to this problem: using a loop, using forEach, using map...
     // 🧠 Solve this challenge using a for/in loop or a for loop.
-    const processLearnersLoop = () => {
-
+    const processLearnersLoop = (learners) => {
+      let result = [];
+      for (let i in learners) {
+        const learner = learners[i]
+        console.log(learner)
+        processSingleLearner(learner)
+      }
+      return learners
     }
 
     // 👉 CHALLENGE 3
@@ -51,8 +64,11 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 Use arrow functions whenever possible.
-    const processLearnerForEach = () => {
-
+    const processLearnerForEach = (arr) => {
+      arr.forEach(learner => {
+        processSingleLearner(learner)
+      })
+      return arr
     }
 
     // 👉 CHALLENGE 4
@@ -61,8 +77,11 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
-
+    const processLearnerMap = (learners) => {
+      learners.map(learner => {
+        processSingleLearner(learner)
+      })
+      return learners
     }
 
     // 👉 CHALLENGE 5
